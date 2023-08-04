@@ -1,0 +1,56 @@
+#tabCard {
+  width: 100%;
+  height: calc(100vh - 220px);
+  overflow-x: auto;
+  box-shadow: #0000001a 0px 3px 10px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.table {
+  width: 100%;
+  height: 800px;
+  border-collapse: collapse;
+}
+
+.title {
+  height: 100px;
+  font-weight: 700;
+  font-size: 28px;
+  color: #ff0000;
+  background: #d9d9d9;
+  position: sticky;
+  top: 0;
+}
+
+.figure {
+  width: 120px;
+  height: 120px;
+}
+
+.figure > img {
+  height: 70%;
+}
+
+.card {
+  height: 120px;
+}
+
+.aboutTr {
+  max-width: 200px;
+}
+
+.tbody {
+  height: 800px;
+  overflow: scroll;
+}
+
+.tbody > :nth-child(even) {
+  background: #d9effd;
+}
+
+.feedcard>th{
+  padding: 0 30px;
+}
