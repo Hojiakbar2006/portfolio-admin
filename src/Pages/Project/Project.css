@@ -13,14 +13,14 @@
 }
 
 .hedTitle > button {
-  width: 200px;
-  height: 50px;
   background: #0090fe;
   border-radius: 8px;
   border: 2px solid #0090fe;
   color: #fff;
   cursor: pointer;
+  font-size: 20px;
   transition: all .4s ease;
+  padding: 12px 20px;
 }
 .hedTitle > button:hover {
   background: #fff;

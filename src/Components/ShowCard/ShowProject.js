@@ -2,53 +2,74 @@ import React from "react";
 import "./Style.css";
 
 import deleteIcon from "../../Assets/Icons/Delete.svg";
-import like from "../../Assets/Icons/Like.svg";
-import dislike from "../../Assets/Icons/Dislike.svg";
 import visible from "../../Assets/Icons/Visible.svg";
 import hidden from "../../Assets/Icons/Hidden.svg";
+import axios from "axios";
 
 export function ShowProject({ data }) {
   return (
     <div id="tabCard">
-      <table className="table">
-        <thead className="title">
+      <table border="1px">
+        <thead>
           <tr>
             <th>ID</th>
-            <th>Img</th>
+            <th>Image</th>
             <th>Name</th>
             <th>About</th>
             <th>Operation</th>
             <th>Visible</th>
-            <th>
-              <img src={like} alt="" />
-            </th>
-            <th>
-              <img src={dislike} alt="" />
-            </th>
           </tr>
         </thead>
-        <tbody className="tbody">
+        <tbody>
           {data.map((item) => {
             return (
-              <tr className="card">
+              <tr key={item.id}>
                 <th>{item.id}</th>
                 <th className="figure">
-                  <img src={item.img} alt="" />
+                  <img width="100%" src={item.image} alt="" />
                 </th>
-                <th>{item.name}</th>
-                <th className="aboutTr">{item.about}</th>
+                <th>{item.title}</th>
+                <th>{item.description}</th>
                 <th>
-                  <img style={{ cursor: "pointer" }} src={deleteIcon} alt="" />
+                  <a href="#">
+                    <img
+                      style={{ cursor: "pointer" }}
+                      src={deleteIcon}
+                      alt=""
+                      onClick={() => {
+                        axios
+                          .delete(
+                            `http://127.0.0.1:8000/api/v1/projects/${item.id}/`
+                          )
+                          .catch((err) => {
+                            console.log(err);
+                          });
+                      }}
+                    />
+                  </a>
                 </th>
                 <th>
-                  <img
-                    style={{ cursor: "pointer" }}
-                    src={item.visible ? visible : hidden}
-                    alt=""
-                  />
+                  <a href="#">
+                    <img
+                      style={{ cursor: "pointer" }}
+                      src={item.visible ? visible : hidden}
+                      alt=""
+                      onClick={(e) => {
+                        const status = item.visible ? 0 : 1;
+                        axios
+                          .patch(
+                            `http://127.0.0.1:8000/api/v1/projects/${item.id}/`,
+                            {
+                              visible: status,
+                            }
+                          )
+                          .catch((err) => {
+                            console.log(err);
+                          });
+                      }}
+                    />
+                  </a>
                 </th>
-                <th>{item.like}</th>
-                <th>{item.disLike}</th>
               </tr>
             );
           })}

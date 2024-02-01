@@ -3,56 +3,15 @@ import "./AppBar.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import signOut from "../../Assets/Icons/signout.svg";
 import visible from "../../Assets/Icons/Visible blue.svg";
+import { useSelector } from "react-redux";
 
 export function AppBar({ data, openNav, setOpenNav, openApp, setOpenApp }) {
   const navigate = useNavigate();
-  const feedback = [
-    {
-      id: 1,
-      name: "Hojiakbar",
-      surname: "Nasriddinov",
-      email: "@hojiakbarnasriddino2006gmail.com",
-      feedback:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia ipsam consectetur eos cum ratione iure illo corporis rem eius quasi.",
-      phone: "992322323",
-    },
-    {
-      id: 2,
-      name: "Hojiakbar",
-      surname: "Nasriddinov",
-      email: "@hojiakbarnasriddino2006gmail.com",
-      feedback:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia ipsam consectetur eos cum ratione iure illo corporis rem eius quasi.",
-      phone: "992322323",
-    },
-    {
-      id: 3,
-      name: "Hojiakbar",
-      surname: "Nasriddinov",
-      email: "@hojiakbarnasriddino2006gmail.com",
-      feedback:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia ipsam consectetur eos cum ratione iure illo corporis rem eius quasi.",
-      phone: "992322323",
-    },
-    {
-      id: 4,
-      name: "Hojiakbar",
-      surname: "Nasriddinov",
-      email: "@hojiakbarnasriddino2006gmail.com",
-      feedback:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia ipsam consectetur eos cum ratione iure illo corporis rem eius quasi.",
-      phone: "992322323",
-    },
-    {
-      id: 5,
-      name: "Hojiakbar",
-      surname: "Nasriddinov",
-      email: "@hojiakbarnasriddino2006gmail.com",
-      feedback:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia ipsam consectetur eos cum ratione iure illo corporis rem eius quasi.",
-      phone: "992322323",
-    },
-  ];
+  const feedback = useSelector((state) => state.feedback);
+
+  const unread = feedback.filter((item)=>item.unread === 1)
+  
+
   return (
     <>
       <div
@@ -93,13 +52,16 @@ export function AppBar({ data, openNav, setOpenNav, openApp, setOpenApp }) {
       </div>
 
       <div className={openApp ? "notifCenter openNotif" : "notifCenter"}>
-        <button onClick={() => navigate("/feedback")}>
-          you have {feedback.length} message
+        <button onClick={() => navigate("/message")}>
+          You have {unread.length} new message
         </button>
         <div className="btn-group">
-          {feedback.map((item) => {
+          {unread.map((item) => {
             return (
-              <button onClick={() => navigate(`view-message/${item.id}`)}>
+              <button
+                key={item.id}
+                onClick={() => navigate(`message/view/${item.id}`)}
+              >
                 <div>
                   <p>{item.name}</p>
                   <p>{item.phone}</p>

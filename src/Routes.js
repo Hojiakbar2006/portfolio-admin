@@ -6,8 +6,9 @@ import { Home } from "./Pages/Home/Home";
 import { Project } from "./Pages/Project/Project";
 import { Alert } from "./Components/UI/Alert";
 import { FeedBack } from "./Pages/FeedBack/FeedBack";
-import { View } from "./Pages/View/View";
+import { FeedbackView } from "./Pages/View/FeedbackView";
 import { AddProject } from "./Pages/AddProject/AddProject";
+import { Config } from "./Config/Config";
 
 const route = [
   { id: 1, name: "Home", routName: "/", element: Home, style: "" },
@@ -15,15 +16,15 @@ const route = [
   {
     id: 3,
     name: "FeedBack",
-    routName: "/feedback",
+    routName: "/message",
     element: FeedBack,
     style: "",
   },
   {
     id: 4,
-    name: "View",
-    routName: "/view-message/:id",
-    element: View,
+    name: "FeedbackView",
+    routName: "/message/view/:id",
+    element: FeedbackView,
     style: "none",
   },
   {
@@ -60,6 +61,7 @@ export function Router() {
           );
         })}
       </Routes>
+      <Config/>
     </div>
   );
 }

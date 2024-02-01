@@ -2,54 +2,70 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 30px;
+}
+
+#AddCard > h2{
+  font-size: 28px;
 }
 
 .AddForm {
   max-width: 480px;
   display: grid;
   grid-template-columns: repeat(2, 50%);
-  grid-template-rows: repeat(7, 45px);
-  gap: 15px;
+  grid-template-rows: repeat(5, 50px);
+  gap: 20px;
 }
 
 .AddForm > input {
   padding-left: 15px;
   border: none;
-  background: #dbd8d8;
+  background: #d2d2d2;
   border-radius: 8px;
   outline: none;
+  color: #fff;
+}
+
+.AddForm > ::-webkit-input-placeholder{
+  color: #fff;
 }
 
 .AddForm > div {
   width: 100%;
   border-radius: 8px;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 10px;
-  overflow: hidden;
+  justify-content: space-between;
 }
 
 .AddForm > div > figure {
   width: 25%;
   height: 100%;
-  background: #dbd8d8;
+  background: #d2d2d2;
   border-radius: 8px;
   overflow: hidden;
 }
 
 .AddForm > div > label {
-  width: 25%;
+  width: 120px;
   height: 100%;
-  background: #dbd8d8;
+  background: #d2d2d2;
   border-radius: 8px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.AddForm > div > label > input{
+  display: none;
+}
+
+.AddForm > div > label > img{
+  height: 100%;
 }
 
 .AddForm > div > label > div {
@@ -79,10 +95,8 @@
   grid-area: 3/1/5/3;
 }
 .AddForm > :nth-child(6) {
-  grid-area: 5/1/7/3;
-}
-.AddForm > :nth-child(7) {
-  grid-area: 7/2/8/3;
+  grid-area: 5/1/5/3;
+  font-size: 20px;
 }
 
 .AddForm > select {
@@ -93,14 +107,19 @@
   outline: none;
   cursor: pointer;
 }
-.AddForm > textarea {
-  width: 100%;
+textarea {
   border: none;
-  background: #dbd8d8;
+  background: #d2d2d2;
   border-radius: 8px;
   outline: none;
-  padding: 20px;
+  padding: 15px;
   resize: none;
+  font-size: 18px;
+  color: #fff;
+}
+
+textarea::-webkit-input-placeholder{
+  color: #fff;
 }
 
 .AddForm > button {
